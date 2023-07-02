@@ -16,7 +16,10 @@ const bot = async () => {
     try {
       const response = await openaiApi.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: userInput }],
+        messages: [
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: userInput },
+        ],
       });
 
       const chatCompletion = response.choices[0].message.content;
